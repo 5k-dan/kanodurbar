@@ -56,7 +56,7 @@
         /* Hero Section */
         .hero {
             background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('horse.jpg') no-repeat center center/cover;
-            height: 80vh;
+            height: 80vh; /* Adjust height if needed */
             display: flex;
             justify-content: center;
             align-items: center;
@@ -109,6 +109,16 @@
             position: relative;
         }
 
+        .section:before {
+            content: "";
+            position: absolute;
+            top: -20px;
+            left: 0;
+            right: 0;
+            height: 20px;
+            background: url('wave.svg') repeat-x;
+        }
+
         .section h2 {
             font-size: 2.5em;
             color: #8b0000;
@@ -116,10 +126,48 @@
             text-align: center;
         }
 
+        .section .content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            align-items: center;
+        }
+
         .section img {
-            max-width: 100%;
+            flex: 1;
+            max-width: 45%;
             border-radius: 10px;
+            margin: 0 auto;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .section p {
+            flex: 1;
+            font-size: 1.2em;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        /* Gallery Section */
+        .gallery {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .gallery img {
+            width: 300px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
         }
 
         /* Footer */
@@ -134,6 +182,25 @@
         footer p {
             font-size: 1em;
         }
+
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 1s forwards;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
     </style>
 </head>
 <body>
@@ -142,86 +209,181 @@
         <h1>Kano Durbar Festival</h1>
         <nav>
             <a href="#about">About</a>
+            <a href="#history">History</a>
             <a href="#highlights">Highlights</a>
             <a href="#traditions">Traditions</a>
             <a href="#gallery">Gallery</a>
-            <a href="#sources">Cite Sources</a>
         </nav>
     </header>
 
     <!-- Hero Section -->
-    <div class="hero">
+    <div class="hero fade-in">
         <h2>A Grand Celebration of Culture</h2>
         <p>Explore the vibrant traditions and the royal elegance of the Kano Durbar Festival, Nigeria's most spectacular horse parade.</p>
         <div class="cta">
             <a href="#about">Discover More</a>
+            <a href="#learn-more" style="margin-left: 20px;">Learn More</a>
         </div>
     </div>
-
-    <!-- About Section -->
-    <div class="section" id="about">
-        <h2>About the Festival</h2>
-        <p>
-            The Kano Durbar Festival is an annual event celebrated in Kano, Nigeria. I first stumbled across the Durbar on TikTok, mesmerized by videos of the grand horse parade. It was captivating. I immediately showed it to my grandparents, who shared their childhood memories of watching the festival live. They told stories about how generations of our family had attended the event, and it felt like I was holding a thread connecting me to my roots.
-        </p>
-        <p>
-            My curiosity grew, and I started researching. I watched more TikToks, scribbled notes, and asked more questions. What I learned was awe-inspiring: the Durbar isn’t just a festival. It’s a vibrant display of Hausa culture and pride. The event includes horsemen in colorful regalia, traditional music, dances, and the royal parade led by the Emir himself. It’s more than an event—it’s a way of life and a celebration of unity.
-        </p>
-        <img src="aboutkano.jpg" alt="About Kano Durbar">
+       <!-- About Section -->
+<div class="section fade-in" id="about">
+    <h2>About the Festival</h2>
+    <p id="about-text">The Kano Durbar Festival is an annual event celebrated in Kano, Nigeria. It takes place on the days of Eid al-Fitr and Eid al-Adha which is a time that displays power, unity, and culture. The event hosts colorful processions comprising horsemen with all their finery, classic music, dances, and the royal parade by the Emir himself. More than being a mere celebration, the festival is the means of preserving the Hausa culture and pride.</p>
+    <p>The Kano Durbar Festival is an annual event celebrated in Kano, Nigeria. It takes place on the days of Eid al-Fitr and Eid al-Adha which is a time that displays power, unity, and culture. The event hosts colorful processions comprising horsemen with all their finery, classic music, dances, and the royal parade by the Emir himself. More than being a mere celebration, the festival is the means of preserving the Hausa culture and pride.</p>
+    <p>This is a festival that takes several days and completely awakens the senses, from the thousands of horsemen in colorful regalia down to the basic display of the beauty of Hausa culture. The Durbar also serves as an avenue for exhibition of the creativity and craftsmanship of Kano's artisans in respect of the elaborately embellished horses, down to the participants' costumes. To many people, this is a once-in-a-lifetime experience.</p>
+    <p>Beyond the pomp and splendor of the parades, the festival furthers the solidarity of communities with diverse backgrounds. Participants and spectators alike, both from the locality and internationally, congregate to celebrate one cultural identity. This is a time for re-establishing ties, studying traditions, and creating memories that are not separated by boundaries. The festival exemplifies the resilience and adaptability of the Hausa culture in a rapidly changing world.</p>
+    <p>The Kano Durbar Festival bridges the gap between the past and the present. Heavily embedded in the old history of the Emirate, the event gives a sense of continuity, comforting participants with values that have kept the community together for generations. Primarily, the festival is a testament to the strong tradition persisting in modernized times.</p>
+    <img src="aboutkano.jpg" alt="About Kano Durbar">
+    <div class="narration-controls">
+        <button onclick="speakText('about-text')">Listen to Narration</button>
+        <button onclick="stopNarration()">Stop Narration</button>
     </div>
+</div>
 
-    <!-- Highlights Section -->
-    <div class="section" id="highlights">
-        <h2>Festival Highlights</h2>
-
-        <!-- Music Section -->
-        <div>
-            <h3>Music and Drumming</h3>
-            <p>
-                The beating of the drums is where it all begins. The rhythm seeps into your soul, carrying the essence of the festival. It feels like the heartbeat of Kano, pulling everyone together. Musicians play the kalangu (talking drum), and griots share stories through songs. The music isn’t just sound; it’s a story, a tradition, and an invitation to dance.
-            </p>
-        </div>
-
-        <!-- Procession Section -->
-        <div>
-            <h3>The Procession of the Emir</h3>
-            <p>
-                Then comes the grand moment—the Emir himself riding a magnificently adorned horse. It’s a moment of reverence and celebration as he leads the procession. His presence symbolizes unity, continuity, and pride. The streets erupt with applause and cheers as the Emir’s entourage follows, each horseman showcasing their elaborate costumes and decorations. It’s a scene straight out of a storybook.
-            </p>
-        </div>
+<!-- History Section -->
+<div class="section" id="history">
+    <h2>History of the Kano Durbar Festival</h2>
+    <p id="history-text">The Durbar Festival has its roots in pre-colonial Hausa and Fulani traditions that date back hundreds of years. It was originally a military parade displaying the might and preparedness of warriors to protect the Emirate from any danger. It later graduated into a cultural and ceremonial event, representing peace, unity, and prosperity for the land.</p>
+    <p>The Durbar Festival has its roots in pre-colonial Hausa and Fulani traditions that date back hundreds of years. It was originally a military parade displaying the might and preparedness of warriors to protect the Emirate from any danger. It later graduated into a cultural and ceremonial event, representing peace, unity, and prosperity for the land.</p>
+    <p>In the past, the festival was a way for the Emir to show off his power and influence; he would often organize such parades when foreign dignitaries came visiting or neighboring rulers. Such processions would show military prowess but also, as importantly, the wealth and cultural sophistication of the Emirate, solidifying the standing of Kano as a major trade and culture hub.</p>
+    <p>It was during this period of colonialism that the Durbar evolved further and took on aspects of diplomacy and public relations. British officials in Nigeria were captivated by the spectacle and generally encouraged its continuation as a means of fostering loyalty among local leaders. In this era, the festival's purpose changed from solely being a Hausa cultural celebration to being a tool for political engagement.</p>
+    <p>Of late, the festival has taken up its role of being a cultural treasure that combines its historical value with modern-day relevance. It does remind one of the resilience and adaptability of the Emirate and the celebration of its contributions to Nigerian identity. Each performance, each parade, and each horseman has a story to tell so that this legacy can continue to inspire generations to come for the Durbar.</p>
+    <img src="historykano.jpg" alt="History of Durbar Festival">
+    <div class="narration-controls">
+        <button onclick="speakText('history-text')">Listen to Narration</button>
+        <button onclick="stopNarration()">Stop Narration</button>
     </div>
+</div>
 
-    <!-- Traditions Section -->
-    <div class="section" id="traditions">
-        <h2>The Rich Traditions of Durbar</h2>
-        <p>
-            The traditions of Durbar run deep. From the ornate costumes passed down through generations to the skilled craftsmanship of the horse decorations, every detail tells a story. The griots, keepers of oral history, captivate audiences with tales of heroism, resilience, and unity. The blessing of the Emir, while on parade, is a spiritual highlight, a time for reflection and thanksgiving.
-        </p>
+<!-- Highlights Section -->
+<div class="section" id="highlights">
+    <h2>Festival Highlights</h2>
+    <p id="highlights-text">In this aspect, the Kano Durbar Festival is indeed a feast for the eyes, elaborated in displays and performances. Bigger in the middle of the celebration, though, are the regal horse parades where horses are decorated with colorful decorations showing the excellence and imagination of Kano's artisans. Each horseman, dressed in traditional regalia, rides proudly into being, incarnating the spirit meant by the festival.</p>
+    <p>Another exciting highlight is the traditional music and drumming during the activities. The rhythmic beating of the drums totally makes the atmosphere electric, as it captures the audience and provides a soundtrack to the parades. Added to this are the traditional dancers moving in coordination, all dressed in colorful attire, which adds color to the event.</p>
+    <p>Arguably, the biggest part of the festival is the procession of the Emir. The Emir of Kano leads the parade himself, riding a gloriously decorated horse, and it is full of poise and dignity, symbolizing unity and continuity. His presence justifies all the rich history and continuous traditions of the Emirate, making this a moment full of reverence and celebration.</p>
+    <p>Other highlights include storytelling by the griots, acrobatics done by the skilled entertainers, and displays in traditional weaponry. This not only entertains the visitors but also enlightens them about the cultural heritage of this part of the world. Its multi-faceted nature means that everyone leaves with something memorable—be it artistry, history, or the warmth of the festival.</p>
+    <img src="highlightskano.jpg" alt="Highlights of Kano Durbar Festival">
+    <div class="narration-controls">
+        <button onclick="speakText('highlights-text')">Listen to Narration</button>
+        <button onclick="stopNarration()">Stop Narration</button>
     </div>
+</div>
 
-    <!-- Gallery Section -->
-    <div class="section" id="gallery">
-        <h2>Gallery</h2>
-        <div class="gallery">
-            <img src="durbar1.jpg" alt="Durbar Image 1">
-            <img src="durbar2.jpg" alt="Durbar Image 2">
-            <img src="durbar3.jpg" alt="Durbar Image 3">
-        </div>
-    </div>
 
-    <!-- Cite Sources Section -->
-    <div class="section" id="sources">
-        <h2>Cite Sources</h2>
-        <ul>
-            <li>TikTok videos by @cultureexplorer and @africanfestivallover</li>
-            <li>Personal stories and memories from my grandparents</li>
-            <li><a href="https://artsandculture.google.com/story/kano-durbar-festival-nigeria-s-most-spectacular-horseparade/tQLi5tQ-fjobJA" target="_blank">Google Arts & Culture: Kano Durbar Festival</a></li>
-        </ul>
+<!-- Traditions Section -->
+<div class="section" id="traditions">
+    <h2>The Rich Traditions of Durbar</h2>
+    <p id="traditions-text">The Durbar Festival has very deep roots in Hausa history, providing a giant stage where the community goes out to pay homage to its culture. Central to the ceremony is the use of horses that have been symbols of power and prestige, signs of nobility since time immemorial in Hausa society. The horses are adorned with a lot of beady work, embroidery, and colorful fabrics expressing the skill of local artisans.</p>
+    <p>The Durbar Festival has very deep roots in Hausa history, providing a giant stage where the community goes out to pay homage to its culture. Central to the ceremony is the use of horses that have been symbols of power and prestige, signs of nobility since time immemorial in Hausa society. The horses are adorned with a lot of beady work, embroidery, and colorful fabrics expressing the skill of local artisans.</p>
+    <p>There are many participants in the festival who wear very beautiful, heavy costumes representing their status and role in society. The detail of the attire proves that this is a cultural show and the festival holds immense importance. Most of the time, these costumes are passed from generation to generation and are considered a matter of pride and continuation.</p>
+    <p>Also included in the traditions of this festival are music and storytelling. Kalangu players drum in good timing and vigor, reverberating the beats along the streets. The griots, keepers of oral history, impressively start telling stories of heroism, cohesion, and resilience, making sure that stories from the past live on for the future.</p>
+    <p>The Durbar Festival is a spiritual experience, down to the very core. The blessing by the Emir, while on parade, is a highly significant event in attendance. It is time for reflection and thanksgiving, an occasion that renews the values of unity, respect, and faith that underpin the festival. This fusion of cultural and spiritual elements makes the Durbar one truly unique celebration.</p>
+    <div class="narration-controls">
+        <button onclick="speakText('traditions-text')">Listen to Narration</button>
+        <button onclick="stopNarration()">Stop Narration</button>
     </div>
+    <img src="traditionskano.jpg" alt="Traditions of Kano Durbar Festival">
+</div>
+
+<!-- Learn More Section -->
+<div class="section fade-in" id="learn-more">
+    <h2>Learn More</h2>
+    <p id="learn-more-text">The Kano Durbar Festival is a mesmerizing cultural event with a rich history and vibrant traditions. It is a visual and auditory feast, showcasing the artistry, history, and unity of the Hausa people. For an even deeper dive into the details, stories, and significance of this incredible celebration, explore additional resources that highlight the heritage and meaning behind this annual spectacle.</p>
+    <div class="learn-more">
+        <a href="https://artsandculture.google.com/story/kano-durbar-festival-nigeria-s-most-spectacular-horseparade/tQLi5tQ-fjobJA" target="_blank">Visit the Full Story</a>
+    </div>
+    <div class="narration-controls">
+        <button onclick="speakText('learn-more-text')">Listen to Narration</button>
+        <button onclick="stopNarration()">Stop Narration</button>
+    </div>
+</div>
+
+<!-- Gallery Section -->
+<div class="section fade-in" id="gallery">
+    <h2>Gallery</h2>
+    <div class="gallery">
+        <img src="durbar1.jpg" alt="Durbar Image 1">
+        <img src="durbar2.jpg" alt="Durbar Image 2">
+        <img src="durbar3.jpg" alt="Durbar Image 3">
+    </div>
+</div>
+
+<!-- Voice Narration Script -->
+<script>
+    let currentUtterance;
+
+    function speakText(elementId) {
+        const textElement = document.getElementById(elementId);
+        if ('speechSynthesis' in window) {
+            if (currentUtterance) speechSynthesis.cancel();
+            currentUtterance = new SpeechSynthesisUtterance(textElement.innerText);
+            currentUtterance.lang = 'en-US';
+            currentUtterance.rate = 1;
+            currentUtterance.pitch = 1;
+            speechSynthesis.speak(currentUtterance);
+        } else {
+            alert('Your browser does not support voice narration.');
+        }
+    }
+
+    function stopNarration() {
+        if ('speechSynthesis' in window) {
+            speechSynthesis.cancel();
+        }
+    }
+</script>
+
+<style>
+    .narration-controls {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 10px;
+    }
+
+    .narration-controls button {
+        background-color: #8b0000;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        font-size: 1em;
+        cursor: pointer;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+    }
+
+    .narration-controls button:hover {
+        background-color: #a52a2a;
+    }
+
+    .gallery {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    .gallery img {
+        width: 300px;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 10px;
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .gallery img:hover {
+        transform: scale(1.1);
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+    }
+</style>
+
+
+
 
     <!-- Footer -->
-    <footer>
+    <footer id="contact">
         <p>&copy; Daniel Ladipo: Kano Durbar Festival. All rights reserved.</p>
     </footer>
 </body>
 </html>
+
